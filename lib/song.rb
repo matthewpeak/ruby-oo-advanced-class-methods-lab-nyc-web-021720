@@ -25,7 +25,6 @@ class Song
 
  def self.create_by_name(new_name)
      song = self.new_by_name(new_name)
-  
      song
  end
  
@@ -35,11 +34,13 @@ class Song
  
 
  def self.find_or_create_by_name(song_name)
-   if find_by_name(song_name) == song_name
-     return create_by_name(song_name)  
-    else 
-     return find_by_name(song_name)
-    end 
+  #  if find_by_name(song_name) == song_name
+  #    return create_by_name(song_name)  
+  #   else 
+  #    return find_by_name(song_name)
+  #   end 
+    self.find_by_name(song_name) || self.create_by_name(song_name)
+
   end
 
   def self.alphabetical 
